@@ -25,10 +25,14 @@ jobs:
 
     steps:
     - name: Create Component Version
-      uses: tpneal/create-ucd-component-version-javascript-action@v1.0
+      uses: tpneal/create-ucd-component-version-javascript-action@v1.1
       with:
         component: 'MyComp'
         name: 'v1'
         description: 'Version 1 of MyComp'
         type: 'full'
+        hostname: 'UCD_Server_hostname'
+        port: 'UCD_Server_port'
+        username: 'admin'
+        password: 'admin'
 ```
