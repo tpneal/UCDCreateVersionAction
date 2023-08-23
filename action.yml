@@ -1,0 +1,38 @@
+name: 'Deploy UCD aapplication'
+description: 'Run UCD Application Process Request '
+inputs:
+  component:
+    description: 'Component Name/ID'
+    required: true
+  versionname:
+    description: 'Component Version Name'
+    required: true
+  description:
+    description: 'Component version description'
+    required: false
+  type:
+    description: 'Type to use for the new version (incremental or full)'
+    required: false
+    default: 'full'
+  hostname:
+    description: 'UCD hostname'
+    required: true
+  port:
+    description: 'port'
+    required: true
+    default: '8443'
+  username:
+    description: 'username'
+    required: true
+  password:
+    description: 'password'
+    required: true
+    secret: true
+  disableSSLVerification:
+    description: 'skip SSL certificate validation when making HTTPS requests and this is discouraged'
+    required: true
+    type: boolean
+    default: false
+runs:
+  using: 'node16'
+  main: 'index.js'
