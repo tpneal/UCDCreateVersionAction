@@ -1,7 +1,7 @@
 {
-  "name": "hello-world-javascript-action",
+  "name": "ucdcreateversionaction",
   "version": "1.0.0",
-  "description": "",
+  "description": "This GitHub Action automates the process of triggering the creation of a new UrbanCode Deploy (UCD) component version based on the provided inputs.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,8 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "@actions/github": "^5.1.1",
-    "@actions/http-client": "^2.1.0",
-    "node-fetch": "^3.3.1"
+    "@actions/github": "^5.1.1"
   }
 }
