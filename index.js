@@ -15,7 +15,7 @@ const currentDateTime = date.getFullYear() + "-" + date.getMonth() + "-" + date.
 import('node-fetch')
   .then((module) => {
     const fetch = module.default;
-    const apiUrl = 'https://' + hostname + ':' + port + '/cli/version/createVersion?component=' + component + '&name=' + versionname.length > 0 ? versionname : currentDateTime;
+    const apiUrl = 'https://' + hostname + ':' + port + '/cli/version/createVersion?component=' + component + '&name=' + (versionname.length > 0 ? versionname : currentDateTime);
 
     console.log("Triggering creation of new UCD component version with " + apiUrl);
 
