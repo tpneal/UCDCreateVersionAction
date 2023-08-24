@@ -13,7 +13,7 @@ const https = require('https');
 import('node-fetch')
   .then((module) => {
     const fetch = module.default;
-    const apiUrl = 'https://' + hostname + ':' + port + '/cli/version/request?component=' + component + '&name=' + versionname;
+    const apiUrl = 'https://' + hostname + ':' + port + '/cli/version/createVersion?component=' + component + '&name=' + versionname;
 
     console.log("Triggering creation of new UCD component version with " + apiUrl);
 
@@ -27,7 +27,7 @@ import('node-fetch')
     fetch(apiUrl, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Accept': 'application/json',
         'Authorization': authHeader // Include the basic authentication header
       },
       agent: httpsAgent

@@ -230,7 +230,7 @@ const https = __nccwpck_require__(687);
 __nccwpck_require__.e(/* import() */ 460).then(__nccwpck_require__.t.bind(__nccwpck_require__, 460, 23))
   .then((module) => {
     const fetch = module.default;
-    const apiUrl = 'https://' + hostname + ':' + port + '/cli/version/request?component=' + component + '&name=' + versionname;
+    const apiUrl = 'https://' + hostname + ':' + port + '/cli/version/createVersion?component=' + component + '&name=' + versionname;
 
     console.log("Triggering creation of new UCD component version with " + apiUrl);
 
@@ -244,7 +244,7 @@ __nccwpck_require__.e(/* import() */ 460).then(__nccwpck_require__.t.bind(__nccw
     fetch(apiUrl, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Accept': 'application/json',
         'Authorization': authHeader // Include the basic authentication header
       },
       agent: httpsAgent
