@@ -1,7 +1,6 @@
 const component = process.env.INPUT_COMPONENT;
 const versionname = process.env.INPUT_VERSIONNAME;
 const description = process.env.INPUT_DESCRIPTION;
-const type = process.env.INPUT_TYPE;
 
 const hostname = process.env.INPUT_HOSTNAME;
 const username = process.env.INPUT_USERNAME;
@@ -15,7 +14,7 @@ const currentDateTime = date.getFullYear() + "-" + date.getMonth() + "-" + date.
 import('node-fetch')
   .then((module) => {
     const fetch = module.default;
-    const apiUrl = 'https://' + hostname + ':' + port + '/cli/version/createVersion?component=' + component + '&name=' + (versionname.length > 0 ? versionname : currentDateTime);
+    const apiUrl = 'https://' + hostname + ':' + port + '/cli/version/createVersion?component=' + component + '&name=' + (versionname.length > 0 ? versionname : currentDateTime) + '&description=' + description;
 
     console.log("Triggering creation of new UCD component version with " + apiUrl);
 

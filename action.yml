@@ -10,10 +10,6 @@ inputs:
   description:
     description: 'Component version description'
     required: false
-  type:
-    description: 'Type to use for the new version (incremental or full)'
-    required: false
-    default: 'full'
   hostname:
     description: 'UCD hostname'
     required: true

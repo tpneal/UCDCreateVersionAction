@@ -218,7 +218,6 @@ var __webpack_exports__ = {};
 const component = process.env.INPUT_COMPONENT;
 const versionname = process.env.INPUT_VERSIONNAME;
 const description = process.env.INPUT_DESCRIPTION;
-const type = process.env.INPUT_TYPE;
 
 const hostname = process.env.INPUT_HOSTNAME;
 const username = process.env.INPUT_USERNAME;
@@ -232,7 +231,7 @@ const currentDateTime = date.getFullYear() + "-" + date.getMonth() + "-" + date.
 __nccwpck_require__.e(/* import() */ 460).then(__nccwpck_require__.t.bind(__nccwpck_require__, 460, 23))
   .then((module) => {
     const fetch = module.default;
-    const apiUrl = 'https://' + hostname + ':' + port + '/cli/version/createVersion?component=' + component + '&name=' + (versionname.length > 0 ? versionname : currentDateTime);
+    const apiUrl = 'https://' + hostname + ':' + port + '/cli/version/createVersion?component=' + component + '&name=' + (versionname.length > 0 ? versionname : currentDateTime) + '&description=' + description;
 
     console.log("Triggering creation of new UCD component version with " + apiUrl);
 

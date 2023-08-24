@@ -21,7 +21,7 @@ name: Create UCD Component Version
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
@@ -29,12 +29,11 @@ jobs:
 
     steps:
     - name: Create Component Version
-      uses: tpneal/create-ucd-component-version-javascript-action@v1.5
+      uses: tpneal/create-ucd-component-version-javascript-action@v1.11
       with:
         component: 'MyComp'
-        name: 'v1'
-        description: 'Version 1 of MyComp'
-        type: 'full'
+        versionname: '${{ github.event.head_commit.id }}'
+        description: '${{ github.repositoryUrl }}'
         hostname: 'UCD_Server_hostname'
         port: 'UCD_Server_port'
         username: 'admin'
