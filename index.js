@@ -10,7 +10,6 @@ const port = process.env.INPUT_PORT;
 const https = require('https');
 const date = new Date();
 const currentDateTime = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + "." + date.getHours() + "." + date.getMinutes() + "." + date.getSeconds();
-var versionId;
 
 import('node-fetch')
   .then((module) => {
@@ -52,9 +51,9 @@ import('node-fetch')
 import('node-fetch')
   .then((module) => {
     const fetch = module.default;
-    const apiUrl = 'https://' + hostname + ':' + port + '/cli/version/finishedImporting?version=' + versionId;
+    const apiUrl = 'https://' + hostname + ':' + port + '/cli/version/finishedImporting?component=' + component + '&version=' + (versionname.length > 0 ? versionname : currentDateTime)version=' + versionId;
 
-    console.log("Triggering creation of new UCD component version with " + apiUrl);
+    console.log("Finishing creation of new UCD component version with " + apiUrl);
 
     const authHeader = 'Basic ' + Buffer.from(username + ':' + password).toString('base64');
 
