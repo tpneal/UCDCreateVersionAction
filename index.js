@@ -51,7 +51,7 @@ import('node-fetch')
 import('node-fetch')
   .then((module) => {
     const fetch = module.default;
-    const apiUrl = 'https://' + hostname + ':' + port + '/cli/version/finishedImporting?component=' + component + '&version=' + (versionname.length > 0 ? versionname : currentDateTime)version=' + versionId;
+    const apiUrl = 'https://' + hostname + ':' + port + '/cli/version/finishedImporting?component=' + component + '&version=' + (versionname.length > 0 ? versionname : currentDateTime);
 
     console.log("Finishing creation of new UCD component version with " + apiUrl);
 
