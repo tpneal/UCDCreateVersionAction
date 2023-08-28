@@ -10,6 +10,7 @@ const port = process.env.INPUT_PORT;
 const https = require('https');
 const date = new Date();
 const currentDateTime = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + "." + date.getHours() + "." + date.getMinutes() + "." + date.getSeconds();
+var versionId;
 
 import('node-fetch')
   .then((module) => {
