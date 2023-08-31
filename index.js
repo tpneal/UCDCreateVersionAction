@@ -69,10 +69,6 @@ import('node-fetch')
       },
       agent: httpsAgent
     })
-      .then(response => response.json())
-      .then(result => {
-        console.log('API finished response:', result);
-      })
       .catch(error => {
         console.error('Unable to mark component version as finished : ', error);
         throw new Error("Terminating!! ");
