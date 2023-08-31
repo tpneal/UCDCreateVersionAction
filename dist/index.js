@@ -285,7 +285,15 @@ __nccwpck_require__.e(/* import() */ 460).then(__nccwpck_require__.t.bind(__nccw
         'Authorization': authHeader // Include the basic authentication header
       },
       agent: httpsAgent
-    });
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log('API finished response:', result);
+      })
+      .catch(error => {
+        console.error('Unable to mark component version as finished : ', error);
+        throw new Error("Terminating!! ");
+      });
   })
   .catch((error) => {
     console.error('Error:', error);
