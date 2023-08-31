@@ -264,13 +264,13 @@ __nccwpck_require__.e(/* import() */ 460).then(__nccwpck_require__.t.bind(__nccw
     console.error('Error:', error);
   });
 
-// Mark the component version import as 'finished' so any configured Deployment Triggers will fire.
+// Mark the component version creation/import as 'finished' so any configured Deployment Triggers will fire.
 __nccwpck_require__.e(/* import() */ 460).then(__nccwpck_require__.t.bind(__nccwpck_require__, 460, 23))
   .then((module) => {
     const fetch = module.default;
-    const apiUrl = 'https://' + hostname + ':' + port + '/cli/version/finishedImporting?version=' + versionId;
+    const apiUrl = 'https://' + hostname + ':' + port + '/cli/version/finishedImporting?component=' + component + '&version=' + (versionname.length > 0 ? versionname : currentDateTime);
 
-    console.log("Triggering creation of new UCD component version with " + apiUrl);
+    console.log("Finishing creation of new UCD component version with " + apiUrl);
 
     const authHeader = 'Basic ' + Buffer.from(username + ':' + password).toString('base64');
 
@@ -285,15 +285,7 @@ __nccwpck_require__.e(/* import() */ 460).then(__nccwpck_require__.t.bind(__nccw
         'Authorization': authHeader // Include the basic authentication header
       },
       agent: httpsAgent
-    })
-      .then(response => response.json())
-      .then(result => {
-        console.log('API response:', result);
-      })
-      .catch(error => {
-        console.error('Unable to finish component import : ', error);
-        throw new Error("Terminating!! ");
-      });
+    });
   })
   .catch((error) => {
     console.error('Error:', error);
