@@ -79,6 +79,8 @@ import('node-fetch')
           };
 
           console.log("Adding link to new UCD component version with " + linkUrl);
+          console.log("Data to PUT: " + JSON.stringify(data));
+            
           fetch(linkUrl, {
             method: 'PUT',
             headers: {

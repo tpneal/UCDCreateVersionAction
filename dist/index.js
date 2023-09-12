@@ -296,6 +296,8 @@ __nccwpck_require__.e(/* import() */ 460).then(__nccwpck_require__.t.bind(__nccw
           };
 
           console.log("Adding link to new UCD component version with " + linkUrl);
+          console.log("Data to PUT: " + JSON.stringify(data));
+            
           fetch(linkUrl, {
             method: 'PUT',
             headers: {
