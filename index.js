@@ -88,7 +88,7 @@ import('node-fetch')
             body: JSON.stringify(data),
             agent: httpsAgent
           })
-          .then(response => response.json())
+          .then(response => response.text())
           .then(result => {
             console.log('Create link response:', result);
           })

@@ -305,7 +305,7 @@ __nccwpck_require__.e(/* import() */ 460).then(__nccwpck_require__.t.bind(__nccw
             body: JSON.stringify(data),
             agent: httpsAgent
           })
-          .then(response => response.json())
+          .then(response => response.text())
           .then(result => {
             console.log('Create link response:', result);
           })
