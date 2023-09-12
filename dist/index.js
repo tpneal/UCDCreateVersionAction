@@ -290,7 +290,7 @@ __nccwpck_require__.e(/* import() */ 460).then(__nccwpck_require__.t.bind(__nccw
           // Add link to the new component version that references the git commit 
           const linkUrl = 'https://' + hostname + ':' + port + '/cli/version/addLinkWithName?component=' + component + '&version=' + (versionname.length > 0 ? versionname : currentDateTime);
           const data = {
-            "isPriority": true,
+            "isPriority": "true",
             "link": description,
             "name": "Git commit",
           };
