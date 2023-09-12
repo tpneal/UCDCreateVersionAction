@@ -1,5 +1,5 @@
-name: 'Deploy UCD aapplication'
-description: 'Run UCD Application Process Request '
+name: 'Create UCD component version'
+description: 'Create a new version for a UCD component'
 inputs:
   component:
     description: 'Component Name/ID'
@@ -23,6 +23,10 @@ inputs:
   password:
     description: 'password'
     required: true
+    secret: true
+  authToken:
+    description: 'UCD auth token'
+    required: false
     secret: true
   disableSSLVerification:
     description: 'skip SSL certificate validation when making HTTPS requests and this is discouraged'
