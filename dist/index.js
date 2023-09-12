@@ -302,6 +302,7 @@ __nccwpck_require__.e(/* import() */ 460).then(__nccwpck_require__.t.bind(__nccw
             method: 'PUT',
             headers: {
               'Accept': 'application/json',
+              'Content-Type': 'application/json',
               'Authorization': authHeader // Include the basic authentication header
             },
             body: JSON.stringify(data),

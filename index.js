@@ -85,6 +85,7 @@ import('node-fetch')
             method: 'PUT',
             headers: {
               'Accept': 'application/json',
+              'Content-Type': 'application/json',
               'Authorization': authHeader // Include the basic authentication header
             },
             body: JSON.stringify(data),
