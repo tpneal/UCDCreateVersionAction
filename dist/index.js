@@ -222,6 +222,7 @@ const description = process.env.INPUT_DESCRIPTION;
 const hostname = process.env.INPUT_HOSTNAME;
 const username = process.env.INPUT_USERNAME;
 const password = process.env.INPUT_PASSWORD;
+const authToken = process.env.INPUT_AUTHTOKEN;
 const disableSSLVerification = process.env.INPUT_DISABLESSLVERIFICATION === 'true';
 const port = process.env.INPUT_PORT;
 const https = __nccwpck_require__(687);
@@ -235,7 +236,15 @@ __nccwpck_require__.e(/* import() */ 460).then(__nccwpck_require__.t.bind(__nccw
 
     console.log("Triggering creation of new UCD component version with " + apiUrl);
 
-    const authHeader = 'Basic ' + Buffer.from(username + ':' + password).toString('base64');
+    let authHeader;
+    if(authToken !== ""){
+      authHeader = 'Basic ' + Buffer.from('PasswordIsAuthToken:' + authToken).toString('base64');
+    } else if(password !== ""){
+      authHeader = 'Basic ' + Buffer.from(username + ':' + password).toString('base64');
+    } else if (authToken == "" && password == "") {
+      throw new Error("Authentication unsuccessful!, Please provide either UCD password or UCD auth token ");
+    }
+
 
     const httpsAgent = new https.Agent({
       rejectUnauthorized: disableSSLVerification === 'true'
@@ -264,7 +273,7 @@ __nccwpck_require__.e(/* import() */ 460).then(__nccwpck_require__.t.bind(__nccw
         // configured Deployment Triggers will fire.
         const finishUrl = 'https://' + hostname + ':' + port + '/cli/version/finishedImporting?component=' + component + '&version=' + (versionname.length > 0 ? versionname : currentDateTime);
 
-        console.log("Finishing creation of new UCD component version with " + apiUrl);
+        console.log("Finishing creation of new UCD component version with " + finishUrl);
         fetch(finishUrl, {
           method: 'POST',
           headers: {
@@ -276,6 +285,34 @@ __nccwpck_require__.e(/* import() */ 460).then(__nccwpck_require__.t.bind(__nccw
         .catch(error => {
           console.error('Unable to mark component version as finished : ', error);
           throw new Error("Terminating!! ");
+        })
+        .then(() => {
+          // Add link to the new component version that references the git commit 
+          const linkUrl = 'https://' + hostname + ':' + port + '/cli/version/addLinkWithName?component=' + component + '&version=' + (versionname.length > 0 ? versionname : currentDateTime);
+          const data = {
+            "isPriority": true,
+            "link": description,
+            "name": "Git commit",
+          };
+
+          console.log("Adding link to new UCD component version with " + linkUrl);
+          fetch(linkUrl, {
+            method: 'PUT',
+            headers: {
+              'Accept': 'application/json',
+              'Authorization': authHeader // Include the basic authentication header
+            },
+            body: JSON.stringify(data),
+            agent: httpsAgent
+          })
+          .then(response => response.json())
+          .then(result => {
+            console.log('Create link response:', result);
+          })
+          .catch(error => {
+            console.error('Unable to add link to component version : ', error);
+            throw new Error("Terminating!! ");
+          });
         });
       });
   })
