@@ -10,6 +10,9 @@ inputs:
   description:
     description: 'Component version description'
     required: false
+  link:
+    description: 'URL to add to component version'
+    required: false
   hostname:
     description: 'UCD hostname'
     required: true
@@ -19,13 +22,13 @@ inputs:
     default: '8443'
   username:
     description: 'username'
-    required: true
+    required: false
   password:
     description: 'password'
-    required: true
+    required: false
     secret: true
   authToken:
-    description: 'UCD auth token'
+    description: 'UCD authentication token'
     required: false
     secret: true
   disableSSLVerification:

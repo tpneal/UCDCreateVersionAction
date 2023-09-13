@@ -218,6 +218,7 @@ var __webpack_exports__ = {};
 const component = process.env.INPUT_COMPONENT;
 const versionname = process.env.INPUT_VERSIONNAME;
 const description = process.env.INPUT_DESCRIPTION;
+const link = process.env.INPUT_LINK;
 
 const hostname = process.env.INPUT_HOSTNAME;
 const username = process.env.INPUT_USERNAME;
@@ -287,35 +288,35 @@ __nccwpck_require__.e(/* import() */ 460).then(__nccwpck_require__.t.bind(__nccw
           throw new Error("Terminating!! ");
         })
         .then(() => {
-          // Add link to the new component version that references the git commit 
-          const linkUrl = 'https://' + hostname + ':' + port + '/cli/version/addLinkWithName?component=' + component + '&version=' + (versionname.length > 0 ? versionname : currentDateTime);
-          const data = {
-            "isPriority": "true",
-            "link": description,
-            "name": "Git commit",
-          };
+          // Add link to the new component version if one was given
+          if (link != "") {
+            const linkUrl = 'https://' + hostname + ':' + port + '/cli/version/addLinkWithName?component=' + component + '&version=' + (versionname.length > 0 ? versionname : currentDateTime);
+            const data = {
+              "isPriority": "true",
+              "link": link,
+              "name": "Git commit",
+            };
 
-          console.log("Adding link to new UCD component version with " + linkUrl);
-          console.log("Data to PUT: " + JSON.stringify(data));
-            
-          fetch(linkUrl, {
-            method: 'PUT',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-              'Authorization': authHeader // Include the basic authentication header
-            },
-            body: JSON.stringify(data),
-            agent: httpsAgent
-          })
-          .then(response => response.text())
-          .then(result => {
-            console.log('Create link response:', result);
-          })
-          .catch(error => {
-            console.error('Unable to add link to component version : ', error);
-            throw new Error("Terminating!! ");
-          });
+            console.log("Adding link to new UCD component version with " + linkUrl);
+            fetch(linkUrl, {
+              method: 'PUT',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': authHeader // Include the basic authentication header
+              },
+              body: JSON.stringify(data),
+              agent: httpsAgent
+            })
+            .then(response => response.text())
+            .then(result => {
+              console.log('Create link response:', result);
+            })
+            .catch(error => {
+              console.error('Unable to add link to component version : ', error);
+              throw new Error("Terminating!! ");
+            });
+          }
         });
       });
   })
