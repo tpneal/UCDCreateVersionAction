@@ -13,7 +13,7 @@ This GitHub Action automates the process of triggering the creation of a new Urb
 * `username` (username:password or authToken is required): Username used to authenticate with the Launch/UCD server.
 * `password` (username:password or authToken is required): Password used to authenticate with the Launch/UCD server.
 * `authToken` (username:password or authToken is required): Authentication token used to authenticate with the Launch/UCD server.  This will override the username:password if specified.
-`disableSSLVerification` (optional): A boolean value indicating whether to skip SSL certificate validation when making HTTPS requests. Default is `false`.
+* `disableSSLVerification` (optional): A boolean value indicating whether to skip SSL certificate validation when making HTTPS requests. Default is `false`.
 
 ## Example Usage
 
