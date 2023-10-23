@@ -235,7 +235,7 @@ __nccwpck_require__.e(/* import() */ 460).then(__nccwpck_require__.t.bind(__nccw
     const fetch = module.default;
     const apiUrl = 'https://' + hostname + ':' + port + '/cli/version/createVersion?component=' + component + '&name=' + (versionname.length > 0 ? versionname : currentDateTime) + '&description=' + description + '&importing=true';
     
-    console.log("Triggering creation of new UCD component version with " + apiUrl);
+    console.log("Triggering creation of new DevOps Deploy component version with " + apiUrl);
 
     let authHeader;
     if(authToken !== ""){
@@ -243,7 +243,7 @@ __nccwpck_require__.e(/* import() */ 460).then(__nccwpck_require__.t.bind(__nccw
     } else if(password !== ""){
       authHeader = 'Basic ' + Buffer.from(username + ':' + password).toString('base64');
     } else if (authToken == "" && password == "") {
-      throw new Error("Authentication unsuccessful!, Please provide either UCD password or UCD auth token ");
+      throw new Error("Authentication unsuccessful!, Please provide either DevOps Deploy password or DevOps Deploy auth token ");
     }
 
 
@@ -266,7 +266,7 @@ __nccwpck_require__.e(/* import() */ 460).then(__nccwpck_require__.t.bind(__nccw
         console.log('Component Version ID:', versionId);
       })
       .catch(error => {
-        console.error('Unable to create component version in UCD : ', error);
+        console.error('Unable to create component version in DevOps Deploy : ', error);
         throw new Error("Terminating!! ");
       })
       .then(() => {
@@ -274,7 +274,7 @@ __nccwpck_require__.e(/* import() */ 460).then(__nccwpck_require__.t.bind(__nccw
         // configured Deployment Triggers will fire.
         const finishUrl = 'https://' + hostname + ':' + port + '/cli/version/finishedImporting?component=' + component + '&version=' + (versionname.length > 0 ? versionname : currentDateTime);
 
-        console.log("Finishing creation of new UCD component version with " + finishUrl);
+        console.log("Finishing creation of new DevOps Deploy component version with " + finishUrl);
         fetch(finishUrl, {
           method: 'POST',
           headers: {
@@ -297,7 +297,7 @@ __nccwpck_require__.e(/* import() */ 460).then(__nccwpck_require__.t.bind(__nccw
               "name": "Git commit",
             };
 
-            console.log("Adding link to new UCD component version with " + linkUrl);
+            console.log("Adding link to new DevOps Deploy component version with " + linkUrl);
             fetch(linkUrl, {
               method: 'PUT',
               headers: {

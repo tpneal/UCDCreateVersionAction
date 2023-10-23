@@ -1,5 +1,5 @@
-name: 'Create UCD component version'
-description: 'Create a new version for a UCD component'
+name: 'Create DevOps Deploy component version'
+description: 'Create a new version for a DevOps Deploy component'
 inputs:
   component:
     description: 'Component Name/ID'
@@ -14,7 +14,7 @@ inputs:
     description: 'URL to add to component version'
     required: false
   hostname:
-    description: 'UCD hostname'
+    description: 'DevOps Deploy hostname'
     required: true
   port:
     description: 'port'
@@ -28,7 +28,7 @@ inputs:
     required: false
     secret: true
   authToken:
-    description: 'UCD authentication token'
+    description: 'DevOps Deploy authentication token'
     required: false
     secret: true
   disableSSLVerification:

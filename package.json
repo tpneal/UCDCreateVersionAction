@@ -1,7 +1,7 @@
 {
-  "name": "ucdcreateversionaction",
+  "name": "devops_deploy_createcomponentversion_action",
   "version": "1.0.0",
-  "description": "This GitHub Action automates the process of triggering the creation of a new UrbanCode Deploy (UCD) component version based on the provided inputs.",
+  "description": "This GitHub Action automates the process of triggering the creation of a new DevOps Deploy component version based on the provided inputs.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
