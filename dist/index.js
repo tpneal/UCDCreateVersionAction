@@ -216,7 +216,7 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const component = process.env.INPUT_COMPONENT;
-const versionname = process.env.INPUT_VERSIONNAME.replace(/ /g, "_");
+let versionname = process.env.INPUT_VERSIONNAME.replace(/ /g, "_");
 const description = process.env.INPUT_DESCRIPTION;
 const link = process.env.INPUT_LINK;
 
