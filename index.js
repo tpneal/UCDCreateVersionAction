@@ -13,7 +13,7 @@ const https = require('https');
 const date = new Date();
 const currentDateTime = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + "." + date.getHours() + "." + date.getMinutes() + "." + date.getSeconds();
 
-versionname = versionname.length > 0 ? versionname.substring(0,49) : currentDateTime;
+versionname = versionname.length > 0 ? versionname.substring(0,59) : currentDateTime;
 
 import('node-fetch')
   .then((module) => {
