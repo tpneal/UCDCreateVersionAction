@@ -216,7 +216,7 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const component = process.env.INPUT_COMPONENT;
-const versionname = process.env.INPUT_VERSIONNAME;
+const versionname = process.env.INPUT_VERSIONNAME.replace(/ /g, "_");
 const description = process.env.INPUT_DESCRIPTION;
 const link = process.env.INPUT_LINK;
 
@@ -233,7 +233,7 @@ const currentDateTime = date.getFullYear() + "-" + date.getMonth() + "-" + date.
 __nccwpck_require__.e(/* import() */ 460).then(__nccwpck_require__.t.bind(__nccwpck_require__, 460, 23))
   .then((module) => {
     const fetch = module.default;
-    const apiUrl = 'https://' + hostname + ':' + port + '/cli/version/createVersion?component=' + component + '&name=' + (versionname.length > 0 ? versionname : currentDateTime) + '&description=' + description + '&importing=true';
+    const apiUrl = 'https://' + hostname + ':' + port + '/cli/version/createVersion?component=' + component + '&name=' + (versionname.length > 0 ? versionname.substring(0,49) : currentDateTime) + '&description=' + description + '&importing=true';
     
     console.log("Triggering creation of new DevOps Deploy component version with " + apiUrl);
 
